@@ -6,10 +6,6 @@ import 'package:provider/provider.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  int get age => null;
-  String get company => null;
-  String get fullName => null;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,7 +37,7 @@ class MyApp extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => BookList(),
+                              builder: (context) => BookListPage(),
                             ));
                       })
                 ],
