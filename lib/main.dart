@@ -39,11 +39,10 @@ class MyApp extends StatelessWidget {
                       child: Text('変更する'),
                       onPressed: () {
                         Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddUser(
-                                  this.fullName, this.company, this.age)),
-                        );
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BookList(),
+                            ));
                       })
                 ],
               ),

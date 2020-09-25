@@ -1,36 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-class AddUser extends StatelessWidget {
-  final String fullName;
-  final String company;
-  final int age;
-
-  AddUser(this.fullName, this.company, this.age);
-
+class BookList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Create a CollectionReference called users that references the firestore collection
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-
-    Future<void> addUser() {
-      // Call the user's CollectionReference to add a new user
-      return users
-          .add({
-            'full_name': fullName, // John Doe
-            'company': company, // Stokes and Sons
-            'age': age // 42
-          })
-          .then((value) => print("User Added"))
-          .catchError((error) => print("Failed to add user: $error"));
-    }
-
-    return FlatButton(
-      onPressed: addUser,
-      child: Text(
-        "Add User",
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('本一覧'),
+      ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('books').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          return ListView(
+            children: snapshot.data.docs.map((DocumentSnapshot documents) {
+              return ListTile(
+                title: Text(documents.data()['title']),
+              );
+            }).toList(),
+          );
+        },
       ),
     );
   }
