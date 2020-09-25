@@ -1,3 +1,4 @@
+import 'package:chill_map/book_list_page.dart';
 import 'package:chill_map/main_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +6,10 @@ import 'package:provider/provider.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  int get age => null;
+  String get company => null;
+  String get fullName => null;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,7 +38,12 @@ class MyApp extends StatelessWidget {
                   RaisedButton(
                       child: Text('変更する'),
                       onPressed: () {
-                        model.changeText();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddUser(
+                                  this.fullName, this.company, this.age)),
+                        );
                       })
                 ],
               ),
