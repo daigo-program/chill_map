@@ -7,7 +7,7 @@ class TimeLineModel extends ChangeNotifier {
 
   Future fetchPosts() async {
     final docs = await FirebaseFirestore.instance.collection('posts').get();
-    final posts = docs.docs.map((doc) => Post(doc.data()['sentence'])).toList();
+    final posts = docs.docs.map((doc) => Post(doc)).toList();
     this.posts = posts;
     notifyListeners();
   }
