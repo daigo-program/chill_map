@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Post {
   Post(DocumentSnapshot doc) {
-    documentID = doc.documentID;
+    documentID = doc.id;
     sentence = doc.data()['sentence'];
   }
 

@@ -11,4 +11,11 @@ class TimeLineModel extends ChangeNotifier {
     this.posts = posts;
     notifyListeners();
   }
+
+  Future deletePost(Post post) async {
+    await FirebaseFirestore.instance
+        .collection('posts')
+        .doc(post.documentID)
+        .delete();
+  }
 }

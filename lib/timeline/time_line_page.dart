@@ -1,4 +1,5 @@
 import 'package:chill_map/add_post/add_post_page.dart';
+import 'package:chill_map/domain/post.dart';
 import 'package:chill_map/timeline/time_line_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,19 +19,43 @@ class TimeLinePage extends StatelessWidget {
           final listTiles = posts
               .map((post) => ListTile(
                     title: Text(post.sentence),
-                    trailing: IconButton(
-                      icon: Icon(Icons.edit),
-                      onPressed: () async {
-                        await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AddPostPage(
-                                      post: post,
-                                    ),
-                                fullscreenDialog: true));
-                        model..fetchPosts();
-                      },
-                    ),
+                    trailing: Wrap(children: [
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () async {
+                          await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AddPostPage(
+                                        post: post,
+                                      ),
+                                  fullscreenDialog: true));
+                          model..fetchPosts();
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () async {
+                          await showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('削除しますか？'),
+                                actions: <Widget>[
+                                  FlatButton(
+                                    child: Text('OK'),
+                                    onPressed: () async {
+                                      Navigator.of(context).pop();
+                                      await deletePost(context, model, post);
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ]),
                   ))
               .toList();
           return ListView(
@@ -53,5 +78,30 @@ class TimeLinePage extends StatelessWidget {
         }),
       ),
     );
+  }
+
+  Future deletePost(
+      BuildContext context, TimeLineModel model, Post post) async {
+    try {
+      await model.deletePost(post);
+      await model.fetchPosts();
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text((e).toString()),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 }
