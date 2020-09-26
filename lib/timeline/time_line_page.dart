@@ -1,5 +1,5 @@
+import 'package:chill_map/add_post/add_post_page.dart';
 import 'package:chill_map/timeline/time_line_model.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +16,20 @@ class TimeLinePage extends StatelessWidget {
               .toList();
           return ListView(
             children: listTiles,
+          );
+        }),
+        floatingActionButton:
+            Consumer<TimeLineModel>(builder: (context, model, child) {
+          return FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () async {
+              await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AddPostPage(),
+                      fullscreenDialog: true));
+              model..fetchPosts();
+            },
           );
         }),
       ),

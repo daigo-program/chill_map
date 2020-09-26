@@ -1,4 +1,4 @@
-import 'package:chill_map/timeline/post.dart';
+import 'package:chill_map/domain/post.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

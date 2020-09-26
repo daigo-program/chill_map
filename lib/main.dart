@@ -1,9 +1,8 @@
+import 'package:chill_map/top/top_page.dart';
 import 'package:flutter/material.dart';
-
 import 'map/map_page.dart';
 import 'my/my_page.dart';
 import 'timeline/time_line_page.dart';
-import 'top/top_page.dart';
 
 void main() => runApp(ChillMap());
 
