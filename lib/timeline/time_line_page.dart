@@ -43,7 +43,9 @@ class TimeLinePage extends StatelessWidget {
                                 title: Text('削除しますか？'),
                                 actions: <Widget>[
                                   FlatButton(
-                                    child: Text('OK'),
+                                    color: Colors.red,
+                                    shape: StadiumBorder(),
+                                    child: Text('削除する'),
                                     onPressed: () async {
                                       Navigator.of(context).pop();
                                       await deletePost(context, model, post);
