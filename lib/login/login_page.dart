@@ -1,21 +1,22 @@
+import 'package:chill_map/login/login_model.dart';
 import 'package:chill_map/my/my_page.dart';
-import 'package:chill_map/sign_up/sign_up_model.dart';
+import 'package:chill_map/sign_up/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SignUpPage extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mailController = TextEditingController();
     final passwordController = TextEditingController();
 
-    return ChangeNotifierProvider<SignUpModel>(
-      create: (_) => SignUpModel(),
+    return ChangeNotifierProvider<LoginModel>(
+      create: (_) => LoginModel(),
       child: Scaffold(
           appBar: AppBar(
-            title: Text('新規登録'),
+            title: Text('ログイン'),
           ),
-          body: Consumer<SignUpModel>(
+          body: Consumer<LoginModel>(
             builder: (context, model, child) {
               return Column(children: [
                 TextField(
@@ -37,18 +38,34 @@ class SignUpPage extends StatelessWidget {
                     model.password = text;
                   },
                 ),
+                SizedBox(
+                  height: 50.0,
+                ),
                 RaisedButton(
-                    child: Text('登録する'),
+                    child: Text('ログイン'),
                     onPressed: () async {
                       try {
-                        await model.signUp();
-                        _showDialog(context, '登録しました');
-                        //TODO:Home画面に遷移
-
+                        await model.login();
+                        _showDialog(context, 'ログインしました');
+                        //TODO:マイページに遷移
                       } catch (e) {
                         _showDialog(context, e.toString());
                       }
                     }),
+                SizedBox(
+                  height: 50.0,
+                ),
+                RaisedButton(
+                  child: Text('新規登録する'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpPage(),
+                      ),
+                    );
+                  },
+                )
               ]);
             },
           )),
