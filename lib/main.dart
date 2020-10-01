@@ -1,5 +1,8 @@
-import 'package:chill_map/top/top_page.dart';
+import 'package:chill_map/presentation/map/map_page.dart';
+import 'package:chill_map/presentation/my/my_page.dart';
 import 'package:flutter/material.dart';
+
+import 'presentation/home/home_page.dart';
 
 void main() => runApp(ChillMap());
 
@@ -9,10 +12,11 @@ class ChillMap extends StatelessWidget {
     return MaterialApp(
       title: 'Chill Map',
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primaryColor: Colors.white,
+        primarySwatch: Colors.grey,
         textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Open Sans'),
       ),
-      home: TopPage(),
+      home: HomePage(),
     );
   }
 }

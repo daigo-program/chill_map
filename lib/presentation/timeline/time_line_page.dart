@@ -1,7 +1,8 @@
-import 'package:chill_map/add_post/add_post_page.dart';
 import 'package:chill_map/domain/post.dart';
-import 'package:chill_map/timeline/time_line_model.dart';
+import 'package:chill_map/presentation/add_post/add_post_page.dart';
+import 'package:chill_map/presentation/timeline/time_line_model.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class TimeLinePage extends StatelessWidget {
@@ -10,10 +11,6 @@ class TimeLinePage extends StatelessWidget {
     return ChangeNotifierProvider<TimeLineModel>(
       create: (_) => TimeLineModel()..fetchPosts(),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Home'),
-          backgroundColor: Colors.teal,
-        ),
         body: Consumer<TimeLineModel>(builder: (context, model, child) {
           final posts = model.posts;
           final listTiles = posts
@@ -67,7 +64,7 @@ class TimeLinePage extends StatelessWidget {
         floatingActionButton:
             Consumer<TimeLineModel>(builder: (context, model, child) {
           return FloatingActionButton(
-            child: Icon(Icons.add),
+            child: Icon(FontAwesomeIcons.pencilAlt),
             onPressed: () async {
               await Navigator.push(
                   context,

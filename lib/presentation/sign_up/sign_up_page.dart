@@ -1,5 +1,5 @@
-import 'package:chill_map/my/my_page.dart';
-import 'package:chill_map/sign_up/sign_up_model.dart';
+import 'package:chill_map/presentation/my/my_page.dart';
+import 'package:chill_map/presentation/sign_up/sign_up_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

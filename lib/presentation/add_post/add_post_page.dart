@@ -1,7 +1,8 @@
-import 'package:chill_map/add_post/add_post_model.dart';
 import 'package:chill_map/domain/post.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'add_post_model.dart';
 
 class AddPostPage extends StatelessWidget {
   AddPostPage({this.post});
