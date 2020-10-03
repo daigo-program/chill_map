@@ -21,13 +21,15 @@ class GoogleMapState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mapstore = Provider.of<MapStore>(context);
-    return Container(
-      child: GoogleMap(
-          onMapCreated: mapstore.onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: LatLng(35.6580339, 139.7016358),
-            zoom: 16.0,
-          )),
+    return Center(
+      child: Container(
+        child: GoogleMap(
+            onMapCreated: mapstore.onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: LatLng(35.6580339, 139.7016358),
+              zoom: 16.0,
+            )),
+      ),
     );
   }
 }
