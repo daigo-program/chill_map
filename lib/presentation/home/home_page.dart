@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'home_model.dart';
 
-class HomePage extends StatelessWidget {
+class AppHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _tab = <Tab>[
