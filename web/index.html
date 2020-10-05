@@ -5,6 +5,8 @@
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter application.">
 
+  <meta name="google-signin-client_id" content="101850101587-nie1pn10vri70q5ettmlliotjk6abb39.apps.googleusercontent.com">
+
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -20,13 +22,7 @@
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js');
-      });
-    }
-  </script>
+
   <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
@@ -37,10 +33,10 @@
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     var firebaseConfig = {
       apiKey: "AIzaSyC_m4tW597QZw_HFKtawYdhWcmuxpwJClo",
-      authDomain: "chill-presentation.map-83df5.firebaseapp.com",
-      databaseURL: "https://chill-presentation.map-83df5.firebaseio.com",
-      projectId: "chill-presentation.map-83df5",
-      storageBucket: "chill-presentation.map-83df5.appspot.com",
+      authDomain: "chill-map-83df5.firebaseapp.com",
+      databaseURL: "https://chill-map-83df5.firebaseio.com",
+      projectId: "chill-map-83df5",
+      storageBucket: "chill-map-83df5.appspot.com",
       messagingSenderId: "85507051893",
       appId: "1:85507051893:web:cb9638cd8de6d32b3e833c",
       measurementId: "G-Y7E1J6TV9L"
@@ -48,6 +44,13 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
+  </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js');
+      });
+    }
   </script>
   <script src="main.dart.js" type="application/javascript"></script>
 </body>

@@ -15,6 +15,9 @@ class TimeLinePage extends StatelessWidget {
           final posts = model.posts;
           final listTiles = posts
               .map((post) => ListTile(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(3.0),
+                    ),
                     title: Text(post.sentence),
                     trailing: Wrap(children: [
                       IconButton(

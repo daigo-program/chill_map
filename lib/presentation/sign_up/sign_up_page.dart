@@ -1,6 +1,8 @@
 import 'package:chill_map/presentation/my/my_page.dart';
 import 'package:chill_map/presentation/sign_up/sign_up_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -37,6 +39,9 @@ class SignUpPage extends StatelessWidget {
                     model.password = text;
                   },
                 ),
+                SizedBox(
+                  height: 100.0,
+                ),
                 RaisedButton(
                     child: Text('登録する'),
                     onPressed: () async {
@@ -49,6 +54,9 @@ class SignUpPage extends StatelessWidget {
                         _showDialog(context, e.toString());
                       }
                     }),
+                SizedBox(
+                  height: 100.0,
+                ),
               ]);
             },
           )),

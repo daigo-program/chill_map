@@ -4,7 +4,7 @@ import 'package:chill_map/presentation/my/my_page.dart';
 import 'package:chill_map/presentation/timeline/time_line_page.dart';
 import 'package:flutter/material.dart';
 
-class WebHomePage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   TabController tabController;
 
   @override
@@ -28,7 +28,7 @@ class WebHomePage extends StatelessWidget {
               ),
               FlatButton(
                 child: Text(
-                  'Chill Map',
+                  'Chill Log',
                   style: TextStyle(
                       fontSize: 25.0,
                       fontFamily: 'Montserrat',
@@ -38,7 +38,7 @@ class WebHomePage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => WebHomePage(),
+                        builder: (context) => HomePage(),
                       ));
                 },
               ),
@@ -86,11 +86,15 @@ class WebHomePage extends StatelessWidget {
                     left: 100.0, top: 50.0, right: 100.0, bottom: 50.0),
                 height: MediaQuery.of(context).size.height - 150.0,
                 width: MediaQuery.of(context).size.width,
-                child: TabBarView(controller: tabController, children: [
-                  TimeLinePage(),
-                  MapPage(),
-                  LoginPage(),
-                ]))
+                child: TabBarView(
+                    physics:
+                        NeverScrollableScrollPhysics(), //画面の横スワイプをできないようにする
+                    controller: tabController,
+                    children: [
+                      TimeLinePage(),
+                      MapPage(),
+                      LoginPage(),
+                    ]))
           ],
         ),
       ),

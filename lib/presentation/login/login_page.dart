@@ -1,6 +1,8 @@
 import 'package:chill_map/presentation/my/my_page.dart';
 import 'package:chill_map/presentation/sign_up/sign_up_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
 import 'login_model.dart';
@@ -61,6 +63,24 @@ class LoginPage extends StatelessWidget {
                     builder: (context) => SignUpPage(),
                   ),
                 );
+              },
+            ),
+            SizedBox(
+              height: 50.0,
+            ),
+            SignInButton(
+              Buttons.Google,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              onPressed: () async {
+                try {
+                  await model.googleLogin();
+                  _showDialog(context, 'ログインしました');
+                  //todo:マイページ遷移
+                } catch (e) {
+                  _showDialog(context, e.toString());
+                }
               },
             )
           ]);

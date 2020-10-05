@@ -19,6 +19,10 @@ dependencies:
   firebase_auth: ^0.18.0+1
   google_maps_flutter: ^0.5.28
   google_maps_flutter_web: ^0.1.0+2
+  responsive_builder: ^0.3.0
+  google_sign_in: ^4.5.4
+  googleapis_auth: 0.2.10
+  flutter_signin_button: ^1.1.0
 
 dev_dependencies:
   flutter_test:

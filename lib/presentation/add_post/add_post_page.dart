@@ -25,6 +25,14 @@ class AddPostPage extends StatelessWidget {
           body: Consumer<AddPostModel>(
             builder: (context, model, child) {
               return Column(children: [
+                Text('Spot'),
+                TextField(
+                  controller: textEditingController,
+                  onChanged: (text) {
+                    model.postSentence = text;
+                  },
+                ),
+                Text('Feeling'),
                 TextField(
                   controller: textEditingController,
                   onChanged: (text) {
